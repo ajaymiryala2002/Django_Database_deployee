@@ -80,7 +80,7 @@ WSGI_APPLICATION = 'django_db_curd.wsgi.application'
 #     }
 # }
 
-
+import MySQLdb
 import os
 
 DATABASES = {
