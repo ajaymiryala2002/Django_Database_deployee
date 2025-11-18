@@ -106,8 +106,13 @@ import dj_database_url
 import os
 
 DATABASES = {
-    'default': dj_database_url.config(default=os.environ.get("postgresql://curd_database_user:CdnjFASJQ1JbonTdzHEuB0LrTapGkNMx@dpg-d4eapmrgk3sc73bkje30-a/curd_database"))
+    'default': dj_database_url.config(
+        default=os.environ.get("DATABASE_URL"),
+        conn_max_age=600,
+        ssl_require=True
+    )
 }
+
 
 
 
