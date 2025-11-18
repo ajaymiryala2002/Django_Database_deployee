@@ -100,13 +100,13 @@ WSGI_APPLICATION = 'django_db_curd.wsgi.application'
 
 " "
 
+
+
 import dj_database_url
 import os
 
 DATABASES = {
-    'default': dj_database_url.config(
-        default="postgresql://curd_database_user:CdnjFASJQ1JbonTdzHEuB0LrTapGkNMx@dpg-d4eapmrgk3sc73bkje30-a/curd_database"
-    )
+    'default': dj_database_url.config(default=os.environ.get("postgresql://curd_database_user:CdnjFASJQ1JbonTdzHEuB0LrTapGkNMx@dpg-d4eapmrgk3sc73bkje30-a/curd_database"))
 }
 
 
