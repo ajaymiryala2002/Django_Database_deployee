@@ -1,0 +1,26 @@
+<h1>Student List</h1>
+
+<a href="{% url 'student_add' %}">Add Student</a>
+
+<table border="1" cellpadding="10">
+    <tr>
+        <th>Name</th>
+        <th>Age</th>
+        <th>Email</th>
+        <th>Actions</th>
+    </tr>
+
+    {% for s in students %}
+    <tr>
+        <td>{{ s.name }}</td>
+        <td>{{ s.age }}</td>
+        <td>{{ s.email }}</td>
+        <td>
+            <a href="{% url 'student_edit' s.id %}">Edit</a> |
+            <a href="{% url 'student_delete' s.id %}">Delete</a>
+        </td>
+    </tr>
+    {% empty %}
+    <tr><td colspan="4">No students added yet</td></tr>
+    {% endfor %}
+</table>
