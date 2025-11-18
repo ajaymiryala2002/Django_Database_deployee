@@ -15,10 +15,7 @@
         <td>{{ s.name }}</td>
         <td>{{ s.age }}</td>
         <td>{{ s.email }}</td>
-        <td>
-            <a href="{% url 'student_edit' s.id %}">Edit</a> |
-            <a href="{% url 'student_delete' s.id %}">Delete</a>
-        </td>
+       
     </tr>
     {% empty %}
     <tr><td colspan="4">No students added yet</td></tr>

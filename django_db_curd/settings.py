@@ -81,18 +81,34 @@ WSGI_APPLICATION = 'django_db_curd.wsgi.application'
 # }
 
 
+# import os
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.mysql',
+#         'NAME': os.getenv("MYSQL_DATABASE"),
+#         'USER': os.getenv("MYSQL_USER"),
+#         'PASSWORD': os.getenv("MYSQL_PASSWORD"),
+#         'HOST': os.getenv("MYSQL_HOST"),
+#         'PORT': os.getenv("MYSQL_PORT", "3306"),
+#         'OPTIONS': {
+#             'init_command': "SET sql_mode='STRICT_TRANS_TABLES'"
+#         }
+#     }
+    
+# }
+
+" "
+
+import dj_database_url
 import os
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': os.getenv("MYSQL_DATABASE"),
-        'USER': os.getenv("MYSQL_USER"),
-        'PASSWORD': os.getenv("MYSQL_PASSWORD"),
-        'HOST': os.getenv("MYSQL_HOST"),
-        'PORT': os.getenv("MYSQL_PORT", "3306"),
-    }
+    'default': dj_database_url.config(
+        default=os.getenv("postgresql://curd_database_user:CdnjFASJQ1JbonTdzHEuB0LrTapGkNMx@dpg-d4eapmrgk3sc73bkje30-a/curd_database")
+    )
 }
+
 
 
 # Password validation
