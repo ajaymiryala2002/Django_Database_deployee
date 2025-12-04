@@ -37,7 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'app1'
+    'app1',
 ]
 
 MIDDLEWARE = [
@@ -108,8 +108,8 @@ DATABASES = {
         'NAME': os.getenv('DB_NAME'),
         'USER': os.getenv('DB_USER'),
         'PASSWORD': os.getenv('DB_PASSWORD'),
-        'HOST': os.getenv('DB_HOST'),
-        'PORT': os.getenv('DB_PORT'),
+        'HOST': os.getenv('DB_HOST','127.0.0.1'),
+        'PORT': os.getenv('DB_PORT','3306'),
         'OPTIONS': {
             'ssl': {
                 'ca': os.getenv('DATABASE_SSL_CERT')
@@ -117,6 +117,9 @@ DATABASES = {
         }
     }
 }
+
+
+
 
 
 
