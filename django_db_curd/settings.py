@@ -102,20 +102,22 @@ WSGI_APPLICATION = 'django_db_curd.wsgi.application'
 
 
 
-import os
-
-if os.environ.get("RENDER"):
-    # Production (Render + Railway MySQL)
-    DATABASES = {
-        "default": {
-            "ENGINE": "django.db.backends.mysql",
-            "NAME": os.environ.get("MYSQLDATABASE"),
-            "USER": os.environ.get("MYSQLUSER"),
-            "PASSWORD": os.environ.get("MYSQLPASSWORD"),
-            "HOST": os.environ.get("MYSQLHOST"),
-            "PORT": os.environ.get("MYSQLPORT", "3306"),
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': os.getenv('DB_NAME'),
+        'USER': os.getenv('DB_USER'),
+        'PASSWORD': os.getenv('DB_PASSWORD'),
+        'HOST': os.getenv('DB_HOST'),
+        'PORT': os.getenv('DB_PORT'),
+        'OPTIONS': {
+            'ssl': {
+                'ca': os.getenv('DATABASE_SSL_CERT')
+            }
         }
     }
+}
+
 
 
 
@@ -157,6 +159,9 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.2/howto/static-files/
 
 STATIC_URL = 'static/'
+STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
